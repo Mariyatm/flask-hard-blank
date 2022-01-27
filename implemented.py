@@ -1,7 +1,16 @@
-# файл для создания DAO и сервисов чтобы импортировать их везде
+from dao.dao_model import ModelDAO
+from service.model import ModelService
+from dao.model.director import Director
+from dao.model.genre import Genre
+from dao.model.movie import Movie
+from setup_db import db
 
-# book_dao = BookDAO(db.session)
-# book_service = BookService(dao=book_dao)
-#
-# review_dao = ReviewDAO(db.session)
-# review_service = ReviewService(dao=review_dao)
+
+movie_dao = ModelDAO(Movie, db.session)
+movie_service =ModelService(dao=movie_dao)
+
+genre_dao = ModelDAO(Genre, db.session)
+genre_service = ModelService(dao=genre_dao)
+
+director_dao = ModelDAO(Director, db.session)
+director_service =ModelService(dao=director_dao)
